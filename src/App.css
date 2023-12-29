@@ -8,3 +8,15 @@
 .main-container {
     display: flex;
 }
+
+.page-title {
+    width: 100%;
+    font-size: 50px;
+    height: 100px;
+    background-color: rgb(0, 128, 255);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 500;
+}

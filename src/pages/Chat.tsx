@@ -1,11 +1,13 @@
 import React from 'react';
+import FriendsList from '../components/FriendsList';
 
 
 
 const Chat = () => {
     return (
       <>
-      <div>Chat</div>
+      <div className='page-title'>Chat with Friends</div>
+      <FriendsList />
       </>
     );
   }

@@ -23,7 +23,7 @@ const getPageName = () => {
     return (
         <>
           <div className='header'>
-          <div className='logo'>Fish Bowl</div>
+          <div className='logo'>FishBowl</div>
             <div>{getPageName()}</div>
           </div>
           </>
