@@ -15,7 +15,7 @@ const NavBar = () => {
               <li 
               key={linkData.title}
               className='row'>
-              <NavLink to={linkData.link}>{linkData.title}</NavLink>
+              <NavLink className="title" to={linkData.link}>{linkData.title}</NavLink>
               </li>
               ))}
 
