@@ -1,7 +1,5 @@
 import React from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
-import { sidebarData } from '../data/sidebarData';
-import { Link } from '../types/link';
+import {useLocation } from 'react-router-dom';
 import '../styles/header.css'
 
 
@@ -25,7 +23,7 @@ const getPageName = () => {
     return (
         <>
           <div className='header'>
-          <div className='logo'>FishBowl</div>
+          <div className='logo'>Fish Bowl</div>
             <div>{getPageName()}</div>
           </div>
           </>

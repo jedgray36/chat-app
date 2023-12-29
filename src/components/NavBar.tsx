@@ -10,6 +10,7 @@ import '../styles/navBar.css'
 const NavBar = () => {
     return (
           <div className='Sidebar'>
+
             <ul className='SidebarList'>
               {sidebarData.map((linkData: Link) => (
               <li 
@@ -18,7 +19,6 @@ const NavBar = () => {
               <NavLink className="title" to={linkData.link}>{linkData.title}</NavLink>
               </li>
               ))}
-
             </ul>
           </div>
       )
