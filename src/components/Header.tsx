@@ -1,7 +1,7 @@
 import React from 'react';
 import {useLocation } from 'react-router-dom';
 import '../styles/header.css'
-
+import PhishingIcon from '@mui/icons-material/Phishing';
 
 
 
@@ -23,7 +23,7 @@ const getPageName = () => {
     return (
         <>
           <div className='header'>
-          <div className='logo'>FishBowl</div>
+          <div className='logo'>FishBowl <PhishingIcon /></div>
             <div>{getPageName()}</div>
           </div>
           </>
