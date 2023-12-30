@@ -1,0 +1,51 @@
+.container {
+    width: 100%;
+}
+
+.content {
+    margin: 2rem;
+    background-color: rgb(251, 251, 251);
+    padding: 2rem;
+    border-radius: 10px;
+}
+
+.chat {
+    margin: 1rem;
+    border-radius: 10px;
+    padding: 1rem;
+    font-size: 20px;
+    background-color: rgb(242, 250, 254);
+}
+
+.messageBox {
+min-height: 300px;
+border: 1px solid #ccc;
+padding: 10px;
+border-radius: 10px;
+overflow-y: scroll;
+background-color: white;
+}
+
+.input {
+    margin-top: 15px;
+    display: flex;
+    }
+
+.send {
+    border-radius: 15px;
+    margin-left: 0.5rem;
+    padding: 5px;
+    border-style: none;
+    color: white;
+    background-color: rgb(0, 128, 255);
+    flex-wrap: nowrap;
+    cursor: pointer;
+}
+
+.Message {
+width: 100%;
+ border: 1px solid gainsboro;
+ background-color: rgb(255, 255, 255);
+ border-radius: 5px;
+}
+
