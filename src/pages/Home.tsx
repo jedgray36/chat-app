@@ -3,8 +3,8 @@ import '../styles/home.css'
 import HomeIcon from '@mui/icons-material/Home';
 import { tabsData } from '../data/tabData';
 
-const TabItem = ({ label, onClick }: { label: string; onClick: () => void }) => (
-  <div className='tab' onClick={onClick}>
+const TabItem = ({ label, active, onClick }: { label: string; active: boolean; onClick: () => void }) => (
+  <div className={active ? 'tabActive' : 'tabs'} onClick={onClick}>
     <h3>{label}</h3>
   </div>
 );
@@ -24,12 +24,14 @@ const Home = () => {
         <div className='container'>
       <div className='page-title'><HomeIcon fontSize='inherit'/>Welcome to FishBowl</div>
       <div className='content'>
+        <div className='tabs'>
         {types.map((tabItem, index) => (
-          <TabItem key={index} label={tabItem} onClick={() => handleTabClick(tabItem)}/>
+            <TabItem key={index} active={tabItem === tab} label={tabItem} onClick={() => handleTabClick(tabItem)}/>
         ))}
-        <div>
+        </div>
+        <div className='data'> 
           {tabsData.filter((item) => item.type === tab).map((tabData) => (
-            <div key={tabData.name}>{tabData.name}</div>
+            <div key={tabData.name}>{tabData.data}</div>
           ))}
         </div>
       </div>
