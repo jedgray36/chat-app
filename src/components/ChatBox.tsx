@@ -1,39 +1,59 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import '../styles/chat.css'
+import io from 'socket.io-client';
+import { Message } from "../types/message";
 
+const socket = io('http://localhost:3001');
 
 const ChatBox = () => {
     
-    const [messages, setMessages] = useState([]);
-    const [newMessage, setNewMessage] = useState('');
+  const [messages, setMessages] = useState<Message[]>([]);
+  const [message, setMessage] = useState('');
   
-    const handleInputChange = (event: any) => {
-      setNewMessage(event.target.value);
-    };
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setMessage(event.target.value);
+  };
   
-    const handleSendMessage = () => {
-      if (newMessage.trim() !== '') {
-        // setMessages([...messages, { text: newMessage, sender: 'user' }]);
-        setNewMessage('');
+    useEffect(() => {
+      socket.on('chat message', (msg) => {
+        setMessages((prevMessages) => [...prevMessages, msg]);
+        console.log(msg);
+      });
   
-        // In a real application, you would send the message to a server or another component.
-        // For simplicity, we're just updating the local state here.
-        // You might want to use a state management library or a global state for better organization.
+      // Clean up when the component unmounts
+      return () => {
+        socket.disconnect();
+      };
+    }, []);
+
+    const sendMessage = () => {
+      if (message.trim() !== '') {
+        const newMessage: Message = {
+          id: messages.length + 1,
+          text: message,
+        };
+  
+        // Emit a 'chat message' event with the message
+        socket.emit('chat message', newMessage);
+  
+        // Clear the input field
+        setMessage('');
       }
     };
-    
+
+
         return (
         <div className='chat-box'>
-        <div className="messageBox" style={{  }}>
-        {messages.map((message, index) => (
-          <div key={index} style={{ marginBottom: '10px', textAlign: message === 'user' ? 'right' : 'left' }}>
-            {message}
+        <div className="messageBox">
+        {messages.map((message) => (
+          <div key={message.id}>
+            <li>{message.text}</li> 
           </div>
         ))}
       </div>
       <div className="input">
-        <input className="Message" type="text" value={newMessage} onChange={handleInputChange} />
-        <button className="send" onClick={handleSendMessage}>Send</button>
+        <input className="Message" type="text" value={message} onChange={handleInputChange} />
+        <button className="send" onClick={sendMessage}>Send</button>
       </div>
               </div>
           )
