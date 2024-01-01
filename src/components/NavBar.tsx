@@ -3,7 +3,6 @@ import { NavLink } from 'react-router-dom';
 import { sidebarData } from '../data/sidebarData';
 import { Link } from '../types/link';
 import '../styles/navBar.css'
-import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 
 
 
@@ -21,7 +20,6 @@ const NavBar = () => {
               ))}
               
             </ul>
-            <li className='settings'><SettingsOutlinedIcon />Settings</li>
           </div>
       )
   }

@@ -1,4 +1,7 @@
 export interface Friend {
-   name: string,
+   firstName: string,
+   lastName: string,
+   age: number,
+   email: string,
    active?: boolean,
 };
