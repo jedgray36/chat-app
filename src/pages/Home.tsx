@@ -10,7 +10,7 @@ const TabItem = ({ label, active, onClick }: { label: string; active: boolean; o
 );
 
 const Home = () => {
-  const [tab, setTab] = useState('');
+  const [tab, setTab] = useState('About');
   const types = Array.from(new Set(tabsData.map((item) => item.type)))
 
   const handleTabClick = (type: string) => {
@@ -22,7 +22,7 @@ const Home = () => {
     return (
       <>
         <div className='container'>
-      <div className='page-title'><HomeIcon fontSize='inherit'/>Welcome to FishBowl</div>
+      <div className='page-title'><HomeIcon fontSize='inherit'/> Welcome to FishBowl</div>
       <div className='content'>
         <div className='tabs'>
         {types.map((tabItem, index) => (
