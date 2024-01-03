@@ -4,6 +4,7 @@ import '../styles/header.css'
 import PhishingIcon from '@mui/icons-material/Phishing';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import SignIn from './SignIn';
 
 
 
@@ -37,20 +38,7 @@ const getPageName = () => {
         Sign In
       </Button>
       </div>
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Sign In</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>Woohoo, you are reading this text in a modal!</Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
-          </Button>
-        </Modal.Footer>
-      </Modal>
+      <SignIn show={show} onClose={handleClose}/>
           </div>
 
           </>
