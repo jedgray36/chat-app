@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import '../styles/chat.css'
-import io, { Socket } from 'socket.io-client';
+import { Socket } from 'socket.io-client';
 import { Message } from "../types/message";
 
 interface ChatBoxProps {

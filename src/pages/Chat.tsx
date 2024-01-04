@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'; 
 import FriendsList from '../components/FriendsList';
-import ChatIcon from '@mui/icons-material/Chat';
 import ChatBox from '../components/ChatBox';
 import '../styles/chat.css'
 import FriendDetails from '../components/FriendDetails';

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { sidebarData } from '../data/sidebarData';
 import { Link } from '../types/link';
@@ -6,10 +6,18 @@ import '../styles/navBar.css'
 import HomeIcon from '@mui/icons-material/Home';
 import ChatIcon from '@mui/icons-material/Chat';
 import SettingsIcon from '@mui/icons-material/Settings';
+import SettingsModal from './settingsModal';
 
 
 
 const NavBar = () => {
+
+const [settings, setSettings] = useState(false);
+
+
+const onClose = () => {
+  setSettings(false);
+}
 
   const getIcon = (iconName: string) => {
     switch (iconName) {
@@ -38,11 +46,13 @@ const NavBar = () => {
 
             </ul>
             <div className='settings-container'>
-              <li className='settings'>
+              <li onClick={() => setSettings(true)} className='settings'>
                 <span className='icon'><SettingsIcon /></span>Settings
                 </li>
               </div>
+              <SettingsModal show={settings} onClose={onClose}/>
           </div>
+          
       )
   }
 

@@ -7,6 +7,7 @@
     background-color: rgb(251, 251, 251);
     padding: 2rem;
     border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .chat {
@@ -17,6 +18,7 @@
     background-color: rgb(242, 250, 254);
     display: flex;
     justify-content: space-between;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .messageBox {
@@ -26,6 +28,8 @@ padding: 10px;
 border-radius: 10px;
 overflow-y: scroll;
 background-color: white;
+
+
 }
 
 .input {
