@@ -7,8 +7,13 @@ import '../styles/chat.css'
 import FriendDetails from '../components/FriendDetails';
 import { Button } from 'react-bootstrap';
 import { selectFriend } from '../actions/actions';
+import { io } from 'socket.io-client';
 
 const Chat = () => {
+
+  const socket = io('http://localhost:3001', {
+    transports: ['websocket']
+});
 
 const selectedFriend = useSelector((state: any) => state.selectedFriend)
 const dispatch = useDispatch();
@@ -21,7 +26,7 @@ const handleFriendChange = (friend: any) => {
     return (
       <>
       <div className='container'>
-      <div className='page-title'> <ChatIcon fontSize='inherit'/> Chat with Friends</div>
+      <div className='page-title'>Chat with Friends</div>
       {selectedFriend ? (
         <>
         <div className='chat'>
@@ -45,7 +50,7 @@ const handleFriendChange = (friend: any) => {
 
       {selectedFriend ? (
       <div className='content'>
-      <ChatBox />
+      <ChatBox socket={socket}/>
       </div>
       ): ""}
 

@@ -23,7 +23,7 @@ onFriendChange(friend)
           <div className='friends-list'>
            <div className='friends'>Friends</div> 
            {friends.map((friend: Friend) => (
-            <div onClick={() => handleChange(friend)} className='friend'>{friend.firstName} {friend.lastName}</div>
+            <div key={friend.email} onClick={() => handleChange(friend)} className='friend'>{friend.firstName} {friend.lastName}</div>
            ))}
           </div>
       )

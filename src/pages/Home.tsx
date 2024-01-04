@@ -22,7 +22,7 @@ const Home = () => {
     return (
       <>
         <div className='container'>
-      <div className='page-title'><HomeIcon fontSize='inherit'/> Welcome to FishBowl</div>
+      <div className='page-title'>Welcome to FishBowl</div>
       <div className='content'>
         <div className='tabs'>
         {types.map((tabItem, index) => (

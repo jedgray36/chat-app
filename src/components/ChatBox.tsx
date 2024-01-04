@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import '../styles/chat.css'
-import io from 'socket.io-client';
+import io, { Socket } from 'socket.io-client';
 import { Message } from "../types/message";
 
-const socket = io('http://localhost:3001');
+interface ChatBoxProps {
+  socket: Socket;
+}
 
-const ChatBox = () => {
+const ChatBox: React.FC<ChatBoxProps> = ({ socket }) => {
     
   const [messages, setMessages] = useState<Message[]>([]);
   const [message, setMessage] = useState('');
@@ -19,12 +21,10 @@ const ChatBox = () => {
         setMessages((prevMessages) => [...prevMessages, msg]);
         console.log(msg);
       });
-  
-      // Clean up when the component unmounts
       return () => {
-        socket.disconnect();
+        socket.off('chat message');
       };
-    }, []);
+    }, [socket]);
 
     const sendMessage = () => {
       if (message.trim() !== '') {
@@ -33,11 +33,16 @@ const ChatBox = () => {
           text: message,
         };
   
-        // Emit a 'chat message' event with the message
         socket.emit('chat message', newMessage);
-  
-        // Clear the input field
+
         setMessage('');
+      }
+    };
+
+
+    const handleKeyPress = (event: any) => {
+      if (event.key === 'Enter') {
+        sendMessage();
       }
     };
 
@@ -47,15 +52,15 @@ const ChatBox = () => {
         <div className="messageBox">
         {messages.map((message) => (
           <div key={message.id}>
-            <li>{message.text}</li> 
+            <li className="chat-message">{message.text}</li> 
           </div>
         ))}
       </div>
       <div className="input">
-        <input className="Message" type="text" value={message} onChange={handleInputChange} />
+        <input onKeyDown={handleKeyPress} className="Message" placeholder="Type your message here..." type="text" value={message} onChange={handleInputChange} />
         <button className="send" onClick={sendMessage}>Send</button>
       </div>
-              </div>
+      </div>
           )
       }
       

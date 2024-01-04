@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
-import { Friend } from "../types/friend";
 
 interface SignInProps  {
     show: boolean,
